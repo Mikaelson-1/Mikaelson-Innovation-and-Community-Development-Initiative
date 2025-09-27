@@ -13,7 +13,10 @@ const ReportsDropdown: React.FC = () => {
     >
       <span>📊 Annual Reports</span>
       <ChevronUp
-        className={cn(open && "-rotate-180 ease-linear  transition-transform duration-300")}
+        className={cn(
+          open &&
+            "rotate-180 ease-linear translate-y-0.5  transition-transform duration-300"
+        )}
       />
       <div
         className={`absolute left-0 top-full w-full rounded-lg border border-gray-200 bg-white p-2 shadow-lg transition-all duration-300 ease-out

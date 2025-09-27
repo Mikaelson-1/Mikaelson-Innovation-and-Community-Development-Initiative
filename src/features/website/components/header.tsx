@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({
   navLinks = [
     { label: "The Team", href: "/team" },
     { label: "About Us", href: "/about" },
-    { label: "Social Feed", href: "/feed" },
+    // { label: "Social Feed", href: "/feed" },
     { label: "Volunteer", href: "/volunteer" },
   ],
   actionButton = { label: "Sponsor a program", href: "/sponsor" },
