@@ -1,4 +1,3 @@
-import { Footer } from "@/components/footer";
 import CommunityHeading from "@/features/website/components/community-heading";
 import EcosystemSection from "@/features/website/components/ecosystem-section";
 import { ExploreMore } from "@/features/website/components/explore-more";

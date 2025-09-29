@@ -26,7 +26,7 @@ export const AboutOrganization: React.FC = () => (
         </p>
         <p className="text-amber-800">
           The Mikaelson Initiative is not associated with any NGO, foundation,
-          or any other entity bearing the name "Mikaelson."
+          or any other entity bearing the name &apos;Mikaelson.&apos;
         </p>
       </div>
       <div className="rounded-xl border-l-4 border-teal-400 bg-emerald-50 p-4">

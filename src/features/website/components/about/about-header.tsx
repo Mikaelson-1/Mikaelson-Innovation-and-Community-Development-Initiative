@@ -33,7 +33,7 @@ export const AboutHeader: React.FC = () => (
       About the Mikaelson Initiative
     </h1>
     <p className="mb-12 text-lg text-gray-600">
-      We're building Africa's future - one student, one idea, one action at a
+      We&apos;re building Africa's future - one student, one idea, one action at a
       time.
     </p>
 

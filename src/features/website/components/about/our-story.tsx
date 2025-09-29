@@ -7,11 +7,11 @@ export const OurStory: React.FC = () => (
         founder discovered a critical problem...
       </p>
       <p className="mb-4 text-gray-700">
-        Recognizing that he wasn't alone in this struggle, he realized that
+        Recognizing that he wasn&apos;t alone in this struggle, he realized that
         countless other African students were facing the same challenges.
       </p>
       <p className="text-gray-700">
-        What began as one person's journey has evolved into a movement reaching
+        What began as one person&apos;s journey has evolved into a movement reaching
         thousands across multiple universities.
       </p>
     </div>

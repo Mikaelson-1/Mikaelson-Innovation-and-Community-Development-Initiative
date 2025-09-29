@@ -12,13 +12,13 @@ const HomeHero: React.FC = () => {
             data-aos="fade-right"
           >
             <h1 className="m-0 text-[2.1rem] font-bold leading-[1.2] text-[#111111]">
-              We're Building Africa's Future - one Student, One Idea, One Action
+              We&apos;re Building Africa&apos;s Future - one Student, One Idea, One Action
               at a Time.
             </h1>
             <p className="mt-[1.2rem] text-[1.1rem] font-normal leading-[1.6] text-[#222222]">
               The Mikaelson Initiative is a youth-driven movement using
               technology, intentional living, and community to transform Africa
-              from the inside out. We're starting with students. We're staying
+              from the inside out. We&apos;re starting with students. We&apos;re staying
               with purpose.
             </p>
           </div>

@@ -19,7 +19,7 @@ const privacySections = [
           and personal information. This Privacy Policy explains how we collect,
           use, disclose, and safeguard your information when you use our
           website, mobile applications, and related services (collectively, the
-          "Services").
+          &apos;Services&apos;).
         </p>
         <p>
           By using our Services, you consent to the collection and use of your
@@ -369,12 +369,12 @@ const privacySections = [
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Post the updated Privacy Policy on our website</li>
-          <li>Update the "Last Updated" date at the top of this policy</li>
+          <li>Update the &apos;Last Updated&apos; date at the top of this policy</li>
           <li>
             Notify you via email or platform notification for material changes
           </li>
           <li>
-            Provide at least 30 days' notice for significant changes affecting
+            Provide at least 30 days&apos; notice for significant changes affecting
             your rights
           </li>
           <li>Obtain your consent where required by applicable law</li>

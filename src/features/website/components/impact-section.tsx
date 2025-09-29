@@ -136,8 +136,8 @@ export default function ImpactSection() {
         {/* Quote */}
         <blockquote className="impact-quote mx-auto mt-10 max-w-3xl rounded-2xl border border-gray-200 bg-white p-6 italic text-gray-800">
           <p>
-            "The Initiative gave me the structure I needed to finally take my
-            life seriously."
+            &apos;The Initiative gave me the structure I needed to finally take my
+            life seriously.&apos;
           </p>
           <footer className="mt-2 not-italic text-sm text-gray-600">
             — A Student, Wesley University

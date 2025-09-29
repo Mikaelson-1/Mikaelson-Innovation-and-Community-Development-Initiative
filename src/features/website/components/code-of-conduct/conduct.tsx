@@ -81,7 +81,7 @@ const codeOfConductItems = [
           </li>
           <li>Public or private harassment, intimidation, or stalking</li>
           <li>
-            Publishing others' private information without their explicit
+            Publishing others&apos; private information without their explicit
             permission
           </li>
           <li>
@@ -122,13 +122,13 @@ const codeOfConductItems = [
         <h4 className="font-semibold">3.2 Collaboration and Support</h4>
         <p>
           We value collaboration over competition. Members should actively
-          support each other's initiatives and contribute to collective success
+          support each other&apos;s initiatives and contribute to collective success
           through:
         </p>
         <ul className="list-disc pl-6 space-y-1">
           <li>Sharing resources, knowledge, and opportunities</li>
           <li>Offering help and assistance when needed</li>
-          <li>Celebrating others' achievements and milestones</li>
+          <li>Celebrating others&apos; achievements and milestones</li>
           <li>Building meaningful professional and personal relationships</li>
           <li>Participating actively in community initiatives</li>
         </ul>
@@ -183,7 +183,7 @@ const codeOfConductItems = [
           <li>Keep discussions relevant, constructive, and on-topic</li>
           <li>Avoid spam, excessive self-promotion, or irrelevant content</li>
           <li>Respect privacy, confidentiality, and intellectual property</li>
-          <li>Give proper credit and attribution when sharing others' work</li>
+          <li>Give proper credit and attribution when sharing others&apos; work</li>
           <li>
             Use appropriate language, tone, and professional communication
           </li>

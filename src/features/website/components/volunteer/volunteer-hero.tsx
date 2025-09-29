@@ -18,7 +18,7 @@ export const VolunteerHero: React.FC = () => (
             Join Our Mission
           </h1>
           <p className="mb-8 text-lg text-gray-600">
-            Be part of Africa's transformation. Connect with like-minded
+            Be part of Africa&apos;s transformation. Connect with like-minded
             changemakers, contribute your skills, and help build a brighter
             future for our continent.
           </p>

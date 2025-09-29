@@ -8,7 +8,7 @@ const VolunteerForm: React.FC = () => (
           Apply to Volunteer
         </h2>
         <p className="text-gray-600">
-          Tell us about yourself and how you'd like to contribute
+          Tell us about yourself and how you&apos;d like to contribute
         </p>
       </div>
       <div className="form-cta mt-8 text-center">
