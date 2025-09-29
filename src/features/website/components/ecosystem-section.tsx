@@ -1,13 +1,24 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 export default function EcosystemSection() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
       className="visible relative z-[1] mx-auto flex max-w-[1200px] flex-col items-center justify-center bg-white px-4 pt-4 pb-16"
-      data-aos="fade-up"
     >
-      <div className="w-full text-center">
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
+        className="w-full text-center"
+      >
         <h2 className="mx-auto mb-8 text-center text-[2.3rem] font-extrabold leading-[1.2] tracking-[-0.025em] text-[#111111]">
           A Home for Builders, Believers, and Doers
         </h2>
@@ -18,10 +29,14 @@ export default function EcosystemSection() {
         >
           Our Ecosystem
         </button>
-      </div>
-      <div
+      </motion.div>
+
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        viewport={{ once: true }}
         className="mikaelson-buttons-container mt-8 flex flex-wrap items-center justify-center gap-6"
-        data-aos="zoom-in"
       >
         <Link href="/community" className="no-underline">
           <button className="mikaelson-button community-btn inline-flex h-[55px] items-center gap-3 rounded-full bg-gray-900 px-5 text-base font-medium text-white shadow-sm hover:bg-black">
@@ -53,7 +68,7 @@ export default function EcosystemSection() {
             </span>
           </button>
         </Link>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
