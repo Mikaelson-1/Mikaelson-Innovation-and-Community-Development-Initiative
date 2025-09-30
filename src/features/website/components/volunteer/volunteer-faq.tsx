@@ -1,4 +1,6 @@
+"use client"
 import React from "react";
+import { motion } from "motion/react";
 import {
   Accordion,
   AccordionItem,
@@ -44,7 +46,7 @@ const VolunteerFAQ: React.FC = () => {
         <Accordion
           type="single"
           collapsible
-          className="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white"
+          className="divide-y space-y-2 divide-gray-200 bg-white"
         >
           {questions.map((item, idx) => (
             <AccordionItem
@@ -55,8 +57,15 @@ const VolunteerFAQ: React.FC = () => {
               <AccordionTrigger className="text-left text-lg font-medium text-gray-900 flex justify-between">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
-                {item.answer}
+              <AccordionContent>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-sm text-gray-600"
+                >
+                  {item.answer}
+                </motion.div>
               </AccordionContent>
             </AccordionItem>
           ))}

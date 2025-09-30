@@ -1,68 +1,52 @@
+"use client"
 import React from "react";
+import { motion } from "motion/react";
 
 const TeamHeroSection: React.FC = () => {
   return (
-    <section
-      className="team-hero-section"
-      style={{ background: "#fff", padding: "2rem 0" }}
-    >
-      <div style={{ width: "100%", maxWidth: 1200, margin: "0 auto" }}>
-        <div
-          className="team-hero-box"
-          style={{
-            background: "rgba(92, 225, 230, 0.5)",
-            padding: "5rem 2rem",
-            borderRadius: 24,
-            minHeight: 550,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+    <section className="bg-white py-5">
+      <div className="mx-auto w-full max-w-6xl">
+        <motion.div
+          className="flex min-h-[550px] items-center justify-center rounded-3xl bg-brand-bg-color px-6 py-10"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div style={{ textAlign: "center", maxWidth: 680 }}>
-            <button
-              style={{
-                background: "transparent",
-                border: "2px solid #374151",
-                color: "#374151",
-                fontSize: "1.5rem",
-                fontWeight: 700,
-                marginBottom: "0.75rem",
-                padding: "0.6rem 1.25rem",
-                borderRadius: "0.75rem",
-                cursor: "pointer",
-              }}
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          >
+            <motion.button
+              className="mb-3 rounded-xl border-2 border-gray-700 px-5 py-4 text-xl font-bold text-gray-700 transition-colors hover:bg-gray-700 hover:text-white"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
               MEET THE TEAM
-            </button>
-            <h1
-              style={{
-                fontSize: "2.9rem",
-                fontWeight: 800,
-                margin: "0 0 1.25rem",
-                color: "#111827",
-                lineHeight: 1.15,
-                letterSpacing: "-0.02em",
-              }}
+            </motion.button>
+            <motion.h1
+              className="mb-5 text-2xl font-extrabold leading-tight tracking-tight text-gray-900 md:text-5xl lg:text-4xl"
+              initial={{ y: 60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
             >
               Meet the Change Makers
-            </h1>
-            <p
-              style={{
-                fontSize: "1.25rem",
-                lineHeight: 1.7,
-                color: "#374151",
-                fontWeight: 500,
-                margin: 0,
-              }}
+            </motion.h1>
+            <motion.p
+              className="text-lg text-left font-medium leading-relaxed text-gray-700 md:text-center md:text-xl"
+              initial={{ y: 70, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
               Discover the passionate individuals driving the Mikaelson
               Initiative forward. Our dedicated team works tirelessly to create
               meaningful impact and transform ideas into reality, one project at
               a time.
-            </p>
-          </div>
-        </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

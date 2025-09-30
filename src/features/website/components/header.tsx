@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { MobileNav } from "@/components/mobile-nav";
 
 // Types
 interface NavLink {
@@ -49,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({
         </Link>
 
         {/* Navigation */}
-        <nav className="ml-6 hidden items-center gap-8 whitespace-nowrap text-sm text-gray-700 md:flex">
+        <nav className="ml-6 hidden items-center gap-8 whitespace-nowrap text-sm text-gray-700 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -84,6 +85,11 @@ const Header: React.FC<HeaderProps> = ({
             </Link>
           )}
         </nav>
+        <MobileNav
+          brandName={brandName}
+          navLinks={navLinks}
+          actionButton={actionButton}
+        />
       </div>
     </header>
   );

@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "motion/react";
 import { Users, Flame, ArrowRight, LogIn, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,16 +11,9 @@ interface LiveStats {
   countriesReached: number;
 }
 
-interface HeroSectionProps {
-  isAuthenticated: boolean;
-  liveStats: LiveStats;
-}
+const formatNumber = (num: number): string => num.toLocaleString();
 
-const formatNumber = (num: number): string => {
-  return num.toLocaleString();
-};
-
-const CommunityHeroSection: React.FC = ({}) => {
+const CommunityHeroSection: React.FC = () => {
   const liveStats = {
     activeMembers: 3247,
     totalStreaks: 18653,
@@ -27,24 +22,45 @@ const CommunityHeroSection: React.FC = ({}) => {
 
   return (
     <section className="relative w-full bg-white py-16">
-      <div className="container mx-auto flex flex-col  items-center px-6 gap-8">
+      <div className="container mx-auto flex flex-col items-center px-4 gap-8  md:gap-12">
         {/* Text Content */}
-        <div className="flex-1 space-y-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+        <motion.div
+          className="flex-1 space-y-6 text-center md:text-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
             Transform Your Life Through
             <span className="block bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text">
               Community & Growth
             </span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-xl">
+          <p className="text-base md:text-lg text-gray-600 max-w-xl">
             Connect with like-minded individuals across Africa, track your
             progress, and achieve your goals together. Experience the power of
             accountability and shared success.
           </p>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.2 } },
+            }}
+          >
+            <motion.div
+              className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               <Users className="w-8 h-8 text-purple-600" />
               <div>
                 <span className="block text-xl font-bold">
@@ -52,8 +68,15 @@ const CommunityHeroSection: React.FC = ({}) => {
                 </span>
                 <span className="text-sm text-gray-500">Active Members</span>
               </div>
-            </div>
-            <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               <Flame className="w-8 h-8 text-orange-500" />
               <div>
                 <span className="block text-xl font-bold">
@@ -61,8 +84,15 @@ const CommunityHeroSection: React.FC = ({}) => {
                 </span>
                 <span className="text-sm text-gray-500">Daily Streaks</span>
               </div>
-            </div>
-            <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow">
+            </motion.div>
+
+            <motion.div
+              className="flex items-center space-x-4 bg-gray-50 p-4 rounded-2xl shadow"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
               <User className="w-8 h-8 text-green-600" />
               <div>
                 <span className="block text-xl font-bold">
@@ -70,38 +100,56 @@ const CommunityHeroSection: React.FC = ({}) => {
                 </span>
                 <span className="text-sm text-gray-500">Countries</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Buttons */}
-          <div className="flex gap-4 pt-4">
-            <Link
-              href="/signup"
-              className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold shadow hover:opacity-90 transition"
+          <motion.div
+            className="flex flex-col md:flex-row gap-4 pt-4 justify-center md:justify-start"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 1 }}
             >
-              <span>Start Your Journey</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+              <Link
+                href="/"
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl btn-gradient text-white font-semibold shadow hover:opacity-90 transition"
+              >
+                <span>Start Your Journey</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+
             <Link
-              href="/login"
+              href="/"
               className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gray-100 text-gray-800 font-semibold shadow hover:bg-gray-200 transition"
             >
               <span>Sign In</span>
               <LogIn className="w-5 h-5" />
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Hero Image */}
-        <div className="relative flex w-full lg:max-w-3xl justify-center overflow-hidden h-[500px] bg-gray-300/50 px-20 py-3 rounded">
+        <motion.div
+          className="relative flex w-full lg:max-w-3xl justify-center overflow-hidden h-[300px] md:h-[500px] bg-gray-300/50 px-4 py-3 rounded"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <Image
             src="/assets/images/IMG_3412 2.jpg"
             alt="Community Hero"
             width={500}
             height={550}
-            className="rounded-md hover:scale-100 duration-200 transition-transform shadow-lg w-full object-cover"
+            className="rounded-md shadow-lg object-cover w-full h-full hover:scale-105 transition-transform duration-200"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

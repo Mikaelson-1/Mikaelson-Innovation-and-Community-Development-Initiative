@@ -102,7 +102,7 @@ export default function MediaStories() {
 
   return (
     <section
-      className="media-stories-section visible px-4 py-16"
+      className="media-stories-section hidden visible px-4 py-16"
       data-aos="fade-up"
     >
       <div className="media-container mx-auto max-w-[1200px]">

@@ -130,8 +130,8 @@ export const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="pt-10 pb-5">
-      <div className="max-w-7xl mx-auto border-t">
+    <footer className="pt-10 mt-5 pb-5 px-5 border-t">
+      <div className="max-w-7xl mx-auto">
         {/* header  */}
         <div className="w-full max-w-sm py-10 mx-auto space-y-4 text-center">
           <div className="flex items-center gap-2">
@@ -150,13 +150,13 @@ export const Footer = () => {
 
         {/* other links */}
         <div className="max-w-5xl mx-auto py-20 border-y">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
             {footerLinks.map((section) => (
               <div key={section.section} className="footer-nav nav-section">
-                <h3 className="mb-2 font-extrabold text-3xl">
+                <h3 className="mb-2 font-extrabold text-lg">
                   {section.section}
                 </h3>
-                <nav className="flex flex-col gap-2 text-xl text-gray-700">
+                <nav className="flex flex-col gap-2 text-sm text-gray-700">
                   {section.links.map((link) => (
                     <Link
                       key={link.href}
@@ -170,7 +170,7 @@ export const Footer = () => {
               </div>
             ))}
             <div className="social-links flex flex-col items-center gap-4">
-              <h1 className="font-extrabold text-3xl">Connect</h1>
+              <h1 className="font-extrabold text-lg">Connect</h1>
               <div className="flex gap-8">
                 {socialLinks.map((item) => (
                   <a
@@ -191,7 +191,9 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-center mt-5">© 2025 Mikaelson Initiative. All rights reserved.</p>
+      <p className="text-center mt-5">
+        © 2025 Mikaelson Initiative. All rights reserved.
+      </p>
     </footer>
   );
 };

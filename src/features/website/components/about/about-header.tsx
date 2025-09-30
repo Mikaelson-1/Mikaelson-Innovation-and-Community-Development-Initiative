@@ -1,3 +1,7 @@
+'use client'
+import React from "react";
+import { motion } from "motion/react";
+
 interface InfoCardProps {
   title: string;
   text: string;
@@ -5,6 +9,7 @@ interface InfoCardProps {
   textColor: string;
   borderColor?: string;
 }
+
 const InfoCard: React.FC<InfoCardProps> = ({
   title,
   text,
@@ -12,7 +17,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
   textColor,
   borderColor,
 }) => (
-  <div
+  <motion.div
     className="rounded-2xl p-8 text-center"
     style={{
       background,
@@ -21,23 +26,51 @@ const InfoCard: React.FC<InfoCardProps> = ({
       borderWidth: borderColor ? 2 : 0,
       borderStyle: "solid",
     }}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    whileHover={{ scale: 1.05 }}
   >
     <h3 className="mb-3 text-xl font-bold">{title}</h3>
-    <p>{text}</p>
-  </div>
+    <p className="text-sm md:text-base">{text}</p>
+  </motion.div>
 );
 
 export const AboutHeader: React.FC = () => (
-  <header className="about-header mx-auto max-w-5xl text-center mt-20">
-    <h1 className="mb-4 text-4xl font-extrabold">
+  <header className="about-header mx-auto max-w-5xl text-center mt-20 px-4">
+    <motion.h1
+      className="mb-4 text-4xl font-extrabold md:text-5xl"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       About the Mikaelson Initiative
-    </h1>
-    <p className="mb-12 text-lg text-gray-600">
-      We&apos;re building Africa's future - one student, one idea, one action at a
-      time.
-    </p>
+    </motion.h1>
+    <motion.p
+      className="mb-12 text-lg text-gray-600 md:text-xl"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+    >
+      We&apos;re building Africa's future - one student, one idea, one action at
+      a time.
+    </motion.p>
 
-    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
+    <motion.div
+      className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: { staggerChildren: 0.2 },
+        },
+      }}
+    >
       <InfoCard
         title="Our Mission"
         text="To empower African communities through innovative technology solutions, quality education, and sustainable development programs that foster economic growth and social progress."
@@ -57,6 +90,6 @@ export const AboutHeader: React.FC = () => (
         background="#10b981"
         textColor="#fff"
       />
-    </div>
+    </motion.div>
   </header>
 );

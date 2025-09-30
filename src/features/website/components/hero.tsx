@@ -9,10 +9,10 @@ const HomeHero: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="px-8 py-10"
+      className="lg:px-8 py-5"
     >
-      <div className="mx-auto max-w-[1200px] rounded-3xl bg-[rgba(92,225,230,0.5)] p-8 text-left md:p-8 min-h-[550px]">
-        <div className="relative mt-10 md:mt-20 mx-auto flex max-w-[1400px] items-stretch justify-between gap-10">
+      <div className="mx-auto max-w-[1200px] rounded-3xl bg-[rgba(92,225,230,0.5)] p-5 text-left md:p-8 min-h-[550px]">
+        <div className="relative mt-10 md:mt-20 mx-auto flex-col flex max-w-[1400px] lg:flex-row items-stretch justify-between gap-10">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -22,11 +22,11 @@ const HomeHero: React.FC = () => {
             className="z-10 flex max-w-[600px] flex-1 flex-col items-start justify-start pt-8 text-left"
             data-aos="fade-right"
           >
-            <h1 className="m-0 text-[2.1rem] font-bold leading-[1.2] text-[#111111]">
+            <h1 className="m-0 text-3xl md:text-[2.1rem] font-bold leading-[1.2] text-[#111111]">
               We&apos;re Building Africa&apos;s Future - one Student, One Idea,
               One Action at a Time.
             </h1>
-            <p className="mt-[1.2rem] text-[1.1rem] font-normal leading-[1.6] text-[#222222]">
+            <p className="mt-[1.2rem] text-lg md:text-[1.1rem] font-normal leading-[1.6] text-[#222222]">
               The Mikaelson Initiative is a youth-driven movement using
               technology, intentional living, and community to transform Africa
               from the inside out. We&apos;re starting with students. We&apos;re

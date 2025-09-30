@@ -1,26 +1,43 @@
+"use client";
 import React from "react";
+import { motion } from "motion/react";
 
 const VolunteerForm: React.FC = () => (
-  <section className="application-form px-6 py-16">
+  <section className="application-form px-4 py-16">
     <div className="container mx-auto max-w-3xl">
-      <div className="form-header text-center">
-        <h2 className="mb-2 text-3xl font-extrabold text-gray-900">
+      <motion.div
+        className="form-header text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="mb-2 text-3xl font-extrabold text-gray-900 md:text-4xl">
           Apply to Volunteer
         </h2>
-        <p className="text-gray-600">
+        <p className="text-gray-600 md:text-lg">
           Tell us about yourself and how you&apos;d like to contribute
         </p>
-      </div>
-      <div className="form-cta mt-8 text-center">
-        <a
+      </motion.div>
+
+      <motion.div
+        className="form-cta mt-8 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        <motion.a
           href="https://forms.gle/UYgZGfb4sthtP19z6"
           target="_blank"
           rel="noopener"
-          className="submit-button inline-flex items-center rounded-full bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow hover:bg-blue-700"
+          className="submit-button inline-flex items-center rounded-full  px-8 py-4 text-lg font-semibold text-white shadow bg-gradient-to-r from-teal-300 to-blue-500  transition-colors"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.2 }}
         >
           Apply now
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </div>
   </section>
 );

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "motion/react";
 
 // Types
 interface TeamMember {
@@ -30,7 +31,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Dr. Samuel Addai",
     role: "Chairman of the Board",
-    img: "/assets/images/team35.jpg",
+    img: "/assets/images/IMG_3412 2.jpg",
     department: "Board of Trustees",
   },
   {
@@ -59,160 +60,103 @@ const TeamSection: React.FC = () => {
   return (
     <div>
       {/* Filter Section */}
-      <section
-        className="filter-section"
-        style={{ padding: "2rem 1rem", background: "#fff" }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "1rem",
-            maxWidth: 1200,
-            margin: "0 auto",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <section className="bg-white px-4 py-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4">
+          <motion.div
+            className="flex flex-wrap gap-3"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             {FILTERS.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                style={{
-                  background:
-                    activeFilter === filter ? "rgb(92,225,230)" : "transparent",
-                  border: "2px solid rgb(92,225,230)",
-                  color: activeFilter === filter ? "white" : "rgb(92,225,230)",
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                  padding: "0.5rem 1rem",
-                  borderRadius: "0.5rem",
-                  cursor: "pointer",
-                  transition: "0.3s",
-                }}
+                className={`rounded-lg border-2 border-cyan-400 px-4 py-2 text-sm font-medium transition-colors sm:text-base ${
+                  activeFilter === filter
+                    ? "bg-cyan-400 text-white"
+                    : "text-cyan-400 hover:bg-cyan-50"
+                }`}
               >
                 {filter}
               </button>
             ))}
-          </div>
-          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+          </motion.div>
+          <motion.div
+            className="flex w-full items-center gap-2 sm:w-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <input
               type="text"
               placeholder="Search team members by name or role..."
               aria-label="Search team members"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              style={{
-                padding: "0.5rem 1rem",
-                border: "2px solid rgb(55,65,81)",
-                borderRadius: "0.5rem",
-                fontSize: "1rem",
-                outline: "none",
-                width: 260,
-              }}
+              className="w-full rounded-lg border-2 border-gray-700 px-4 py-2 text-sm outline-none focus:border-cyan-400 sm:w-72 sm:text-base"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Header Section */}
-      <section
-        className="team-impact"
-        style={{
-          padding: "4rem 1rem",
-          textAlign: "center",
-          background: "rgb(248,250,252)",
-          marginTop: "4rem",
-        }}
+      <motion.section
+        className="mt-12 bg-gray-50 px-4 py-16 text-center md:mt-16"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
-        <h2
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: 700,
-            marginBottom: "2rem",
-            color: "rgb(17,17,17)",
-          }}
-        >
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl md:mb-8 md:text-5xl">
           Our Team of Impact
         </h2>
-        <h3
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: 500,
-            marginBottom: "2rem",
-            color: "rgb(107,114,128)",
-            maxWidth: 800,
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
+        <h3 className="mx-auto max-w-3xl text-base font-medium text-gray-500 sm:text-lg md:text-xl">
           Shaping the future of Africa with community backed by sustainable
           technology
         </h3>
-      </section>
+      </motion.section>
 
       {/* Team Members */}
-      <section
-        className="team-members"
-        style={{ padding: "2rem 1rem", background: "#fff" }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-              gap: "2rem",
+      <section className="bg-white px-4 py-12">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.15 },
+              },
             }}
           >
             {filteredMembers.map((member) => (
-              <div
+              <motion.div
                 key={member.name}
+                className="relative h-[360px] w-full cursor-pointer overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-50 transition-transform hover:scale-[1.02] hover:shadow-lg sm:h-[400px] md:h-[420px]"
                 style={{
-                  width: 350,
-                  height: 420,
-                  background: `url('${member.img}') center center / cover, rgb(248,250,252)`,
-                  border: "2px solid rgb(229,231,235)",
-                  borderRadius: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  padding: "1rem",
-                  cursor: "pointer",
-                  transition: "transform 0.2s, box-shadow 0.2s",
+                  backgroundImage: `url(${member.img})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
                 }}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.6 }}
               >
-                <div
-                  style={{
-                    background: "rgba(255,255,255,0.9)",
-                    padding: "0.5rem",
-                    borderRadius: "0.25rem",
-                    textAlign: "center",
-                  }}
-                >
-                  <h4
-                    style={{
-                      fontSize: "1.125rem",
-                      fontWeight: 600,
-                      margin: 0,
-                      color: "rgb(55,65,81)",
-                    }}
-                  >
+                <div className="absolute bottom-0 left-0 right-0 m-4 rounded bg-white/90 p-3 text-center">
+                  <h4 className="text-base font-semibold text-gray-700 sm:text-lg">
                     {member.name}
                   </h4>
-                  <p
-                    style={{
-                      fontSize: "1rem",
-                      margin: "0.25rem 0 0",
-                      color: "rgb(107,114,128)",
-                    }}
-                  >
+                  <p className="mt-1 text-sm text-gray-500 sm:text-base">
                     {member.role}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

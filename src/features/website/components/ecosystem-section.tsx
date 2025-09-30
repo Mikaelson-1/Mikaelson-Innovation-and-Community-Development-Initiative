@@ -10,7 +10,7 @@ export default function EcosystemSection() {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="visible relative z-[1] mx-auto flex max-w-[1200px] flex-col items-center justify-center bg-white px-4 pt-4 pb-16"
+      className="visible hidden relative z-[1] mx-auto max-w-[1200px] flex-col items-center justify-center bg-white px-4 pt-4 pb-16"
     >
       <motion.div
         initial={{ y: 40, opacity: 0 }}

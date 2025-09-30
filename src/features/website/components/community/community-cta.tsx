@@ -33,8 +33,8 @@ const CommunityCTA: React.FC<CTAProps> = ({
     <section className="bg-gradient-to-br from-[#f8fafc] to-[#f1f5f9] py-16">
       <div className="max-w-4xl mx-auto px-6 text-center">
         {/* Icon */}
-        <div className="flex items-center justify-center w-20 h-20 rounded-full mb-4 mx-auto bg-gradient-to-br from-blue-600 to-teal-400 animate-pulse">
-          <Crown className="w-12 h-12" aria-hidden="true" />
+        <div className="flex items-center justify-center w-20 h-20 rounded-full mb-4 mx-auto bg-gradient-to-br from-blue-600 to-teal-400">
+          <Crown className="w-12 h-12 text-white" aria-hidden="true" />
         </div>
 
         {/* Heading */}
@@ -45,7 +45,7 @@ const CommunityCTA: React.FC<CTAProps> = ({
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
           <a
             href={primaryAction.href}
-            className="px-6 py-3 rounded-2xl bg-brand-blue font-semibold shadow hover:bg-brand-blue text-lg text-white transition"
+            className="px-6 py-3 rounded-2xl btn-gradient font-semibold shadow text-lg text-white transition"
           >
             {primaryAction.label}
           </a>

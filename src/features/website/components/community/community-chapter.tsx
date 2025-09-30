@@ -137,11 +137,11 @@ const CommunityChapters: React.FC = () => {
         </div>
 
         {/* Total Members Stats */}
-        <div className="relative  bg-brand-blue rounded-4xl shadow p-20 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        <div className="relative btn-gradient rounded-4xl shadow lg:p-20 p-10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="flex items-center space-x-4">
             <Users className="w-10 h-10 text-white" />
             <div>
-              <span className="block text-3xl font-extrabold">
+              <span className="block text-2xl lg:text-5xl font-extrabold">
                 {formatNumber(totalCommunityMembers)}
               </span>
               <span className="text-gray-600">
@@ -154,19 +154,6 @@ const CommunityChapters: React.FC = () => {
             <span className="text-gray-700 font-medium">
               United in Growth, Connected by Purpose
             </span>
-          </div>
-
-          {/* Floating Decorations */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div className="absolute top-0 left-0 animate-bounce">
-              <GraduationCap className="w-6 h-6 text-yellow-500" />
-            </div>
-            <div className="absolute bottom-0 right-1/4 animate-bounce">
-              <Rocket className="w-6 h-6 text-red-500" />
-            </div>
-            <div className="absolute top-1/2 right-0 animate-bounce">
-              <Star className="w-6 h-6 text-purple-500" />
-            </div>
           </div>
         </div>
 

@@ -82,7 +82,7 @@ export default function ImpactSection() {
   const itemsToShow = TABS[activeTab];
 
   return (
-    <section className="impact-section visible px-4 py-16" data-aos="fade-up">
+    <section className="impact-section hidden visible px-4 py-16" data-aos="fade-up">
       <div className="container mx-auto max-w-[1200px] text-center">
         {/* Section heading */}
         <button
