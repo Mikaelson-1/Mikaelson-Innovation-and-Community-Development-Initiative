@@ -63,17 +63,20 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.55, ease: "easeOut" }}
               className="flex items-center gap-3 pt-1 flex-wrap"
             >
-              <Link href="/community">
+              <Link href="#our-ecosystem">
                 <button className="px-7 py-3 text-sm font-semibold text-white bg-[#0097a7] rounded-full hover:bg-[#00838f] transition-all duration-300 shadow-[0_4px_20px_rgba(0,151,167,0.3)] hover:shadow-[0_6px_28px_rgba(0,151,167,0.45)] focus:outline-none focus:ring-2 focus:ring-[#5CE1E6]">
-                  Join The Community
+                  Explore Ecosystems
                 </button>
               </Link>
 
-              <Link href="/waitlist">
-                <button className="px-7 py-3 text-sm font-semibold text-[#0097a7] border-2 border-[#5CE1E6]/70 rounded-full hover:border-[#5CE1E6] hover:bg-[#5CE1E6]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#5CE1E6]">
-                  Join Waitlist
-                </button>
-              </Link>
+              <a
+                href="https://club.mikaelsoninitiative.org"
+                target="_blank"
+                rel="noreferrer"
+                className="px-7 py-3 text-sm font-semibold text-white bg-[#003E45] rounded-full hover:bg-[#002b30] transition-all duration-300 shadow-[0_4px_20px_rgba(0,62,69,0.3)] hover:shadow-[0_6px_28px_rgba(0,62,69,0.45)] focus:outline-none focus:ring-2 focus:ring-[#003E45]"
+              >
+                Mikaelson School Club
+              </a>
             </motion.div>
           </div>
 

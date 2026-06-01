@@ -6,10 +6,8 @@ import BlogSectionWrapper from "./blog-wrapper";
 import OurEcosystemTabs from "@/components/client-page/our-ecosystem";
 import WhoItsFor from "./audience";
 // import CommunitySection from "@/components/client-page/community-section";
-import FinalSection from "@/components/client-page/final-section";
-
 export default function Home() {
-  
+
   return (
     <>
       <HomeHero />
@@ -22,7 +20,6 @@ export default function Home() {
         <ImpactSection />
         {/* <CommunitySection /> */}
         <BlogSectionWrapper />
-        <FinalSection />
       </main>
     </>
   );

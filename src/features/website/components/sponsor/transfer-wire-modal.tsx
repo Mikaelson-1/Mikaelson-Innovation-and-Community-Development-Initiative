@@ -24,25 +24,22 @@ export function WireTransferDialog({ onClose, open }: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-2 text-sm text-gray-700">
+        <div className="space-y-2 text-sm text-gray-700 dark:text-gray-300">
           <p>
-            <strong>Bank Name:</strong> Example Bank
+            <strong>Bank Name:</strong> First Bank of Nigeria
           </p>
           <p>
-            <strong>Account Name:</strong> Mikaelson Initiative
+            <strong>Account Name:</strong> Mikaelson Community Development And Tech Initiative
           </p>
           <p>
-            <strong>Account Number:</strong> 1234567890
+            <strong>Account Number:</strong> 2048233790
           </p>
-          <p>
-            <strong>Routing Number:</strong> 123456789
-          </p>
-          <p>
-            <strong>SWIFT Code:</strong> EXAMPLEXXX
-          </p>
-          <p className="pt-3 italic text-gray-500">
-            Please email us at community@mikaelsoninitiative.org with your
-            transfer confirmation.
+          <p className="pt-3 italic text-gray-500 dark:text-gray-400">
+            Please email us at{" "}
+            <a href="mailto:hello@mikaelsoninitiative.org" className="text-[#5CE1E6] hover:underline">
+              hello@mikaelsoninitiative.org
+            </a>{" "}
+            with your transfer confirmation.
           </p>
         </div>
       </DialogContent>

@@ -80,7 +80,7 @@ export const audience = [
     description:
       "Students who want to develop strong habits, confidence, and leadership skills early. Mikaelson helps secondary school students build discipline, curiosity, and a mindset for long-term growth.",
     icon: ShieldCheck,
-    image: "/assets/images/mikaelson-landing.png",
+    image: "/assets/images/community-2.png",
   },
   {
     number: "02",
@@ -88,7 +88,7 @@ export const audience = [
     description:
       "Undergraduate students looking for structure, accountability, and a community focused on personal development. Mikaelson supports students in building leadership capacity and real-world skills beyond the classroom.",
     icon: GraduationCap,
-    image: "/assets/images/mikealson-hero.png",
+    image: "/assets/images/community-1.png",
   },
   {
     number: "03",
@@ -96,7 +96,7 @@ export const audience = [
     description:
       "Students interested in exploring ideas, technology, and problem-solving. Mikaelson encourages creative thinking and helps young innovators turn curiosity into meaningful projects and solutions.",
     icon: Lightbulb,
-    image: "/assets/images/mikaelson-landing-ii.png",
+    image: "/assets/images/community-3.png",
   },
   {
     number: "04",
@@ -104,7 +104,7 @@ export const audience = [
     description:
       "Young Africans who believe leadership begins with responsibility, discipline, and service. Mikaelson connects students who want to grow personally while contributing positively to their communities.",
     icon: Globe,
-    image: "/assets/images/leadership.png",
+    image: "/assets/images/community-4.png",
   },
 ];
 
@@ -191,19 +191,19 @@ export const floatingCards = [
 
 export const ecosystems = [
   {
-    id: "community",
-    label: "The Mikaelson Community",
+    id: "school-club",
+    label: "Mikaelson School Club",
 
-    title: "A growth-driven environment for discipline, clarity, and personal development",
-    subtitle: "This is where the journey begins:",
+    title: "Bringing leadership, discipline, and growth culture directly into schools",
+    subtitle: "Where campus change begins:",
     bullets: [
-      "A structured community where students build discipline through daily systems and shared accountability.",
-      "An environment designed to help you develop focus, consistency, and a growth-oriented mindset.",
-      "A space where young people challenge themselves and each other to become better every day.",
-      "The foundation layer where habits, thinking, and identity are shaped.",
+      "An official club framework for schools to adopt Mikaelson's values within their academic environment.",
+      "Students run structured weekly sessions focused on habits, leadership, and peer accountability.",
+      "A campus-level movement that builds growth culture and intentional student communities.",
+      "The bridge between individual development and institutional change, starting where students already are.",
     ],
-    cta: { label: "Enter the Community", href: "/community" },
-    accent: "#5CE1E6",
+    cta: { label: "Start a Club", href: "https://club.mikaelsoninitiative.org" },
+    accent: "#003E45",
     number: "01",
   },
 

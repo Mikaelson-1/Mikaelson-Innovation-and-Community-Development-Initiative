@@ -7,20 +7,20 @@ import EcosystemSection from "./ecosystem";
 
 const tabs = [
   {
-    id: "community",
-    label: "The Mikaelson Community",
-    color: "#5CE1E6",
-    textColor: "text-black",
-    iconBg: "bg-black",
-    iconColor: "text-white",
-    title: "The Mikaelson Community",
+    id: "school-club",
+    label: "Mikaelson School Club",
+    color: "#003E45",
+    textColor: "text-white",
+    iconBg: "bg-white",
+    iconColor: "text-[#003E45]",
+    title: "Mikaelson School Club",
     content:
-      "The Mikaelson Community is a vibrant network of ambitious students and changemakers across Africa, united by excellence and intentional growth.",
-    glowColor: "rgba(92,225,230,0.2)",
-    shadowColor: "rgba(92,225,230,0.5)",
+      "The Mikaelson School Club brings the initiative's values directly into schools, empowering students to build structured growth systems, lead peer communities, and champion discipline within their academic environments.",
+    glowColor: "rgba(0,62,69,0.15)",
+    shadowColor: "rgba(0,62,69,0.45)",
     cta: {
-      text: "Join the Community",
-      href: "/community",
+      text: "Start a Club",
+      href: "https://club.mikaelsoninitiative.org",
     },
   },
   {
@@ -66,7 +66,7 @@ export default function OurEcosystemTabs() {
   const activeIndex = tabs.findIndex((t) => t.id === activeTab);
 
   return (
-    <section className="py-24  bg-white dark:bg-background overflow-hidden">
+    <section id="our-ecosystem" className="py-24  bg-white dark:bg-background overflow-hidden">
       <div className="container mx-auto px-5  lg:px-10 max-w-6xl">
 
         {/* Header */}

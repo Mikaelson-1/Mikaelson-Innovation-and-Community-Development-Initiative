@@ -58,10 +58,10 @@ const ContactUsForm: React.FC = () => {
             Whether you have questions, feedback, or want to partner with us,
             drop us a message below or email us directly at{" "}
             <a
-              href="mailto:partnerships@mikaelsoninitiative.org"
+              href="mailto:partnership@mikaelsoninitiative.org"
               className="text-teal-500 font-semibold hover:underline"
             >
-              partnerships@mikaelsoninitiative.org
+              partnership@mikaelsoninitiative.org
             </a>
             .
           </p>

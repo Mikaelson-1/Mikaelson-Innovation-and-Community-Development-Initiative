@@ -62,22 +62,22 @@ export const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed">
-              Elevating humanity through leadership, technology, and community — one student at a time.
+              Building Community & Technology Infrastructure for Discipline, Habit Leadership & Sustainable Growth in Education.
             </p>
             <div className="flex flex-col gap-2.5">
               <a
-                href="mailto:mikaelsoninitiative@gmail.com"
+                href="mailto:hello@mikaelsoninitiative.org"
                 className="flex items-center gap-2.5 text-sm text-black/50 dark:text-white dark:text-white  hover:text-[#5CE1E6] dark:hover:text-[#5CE1E6] transition-colors duration-200 group"
               >
                 <Mail size={14} />
-                mikaelsoninitiative@gmail.com
+                hello@mikaelsoninitiative.org
               </a>
               <a
-                href="https://www.google.com/maps"
+                href="https://www.google.com/maps/place/Lagos,+Nigeria"
                 className="flex items-center gap-2.5 text-sm text-black/50 dark:text-white hover:text-[#5CE1E6] dark:hover:text-[#5CE1E6] transition-colors duration-200"
               >
                 <MapPin size={14} />
-                Nigeria, Africa
+                Lagos, Nigeria
               </a>
             </div>
           </div>

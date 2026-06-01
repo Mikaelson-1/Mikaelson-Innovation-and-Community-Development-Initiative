@@ -97,7 +97,7 @@ export function EcosystemBlock({ eco }: { eco: (typeof ecosystems)[0] }) {
               </div>
 
               {/* bullet text */}
-              <p className="text-[#050a0a]/80 text-[15px] leading-relaxed font-medium">
+              <p className="text-[#050a0a]/80 text-[13px] leading-relaxed font-medium">
                 {bullet}
               </p>
 
@@ -173,8 +173,8 @@ export function EcosystemBlock({ eco }: { eco: (typeof ecosystems)[0] }) {
                   {eco.label} · Point {i + 1}
                 </p>
                 <p
-                  className="font-bold mb-8 leading-[1.2] tracking-[-0.02em] text-[#050a0a]"
-                  style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.4rem)" }}
+                  className="font-bold mb-8 leading-[1.3] tracking-[-0.02em] text-[#050a0a]"
+                  style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.2rem)" }}
                 >
                   {bullet}
                 </p>

@@ -37,10 +37,10 @@ export interface TeamMember {
 // Filter options
 export const FILTERS = {
   ALL: "All",
-  TECH: "Tech team",
+  LEADS: "Team Leads",
   OPERATIONS: "Operations",
-  ADVISORS: "Advisors & Patrons",
-  TRUSTEES: "Board of Trustees",
+  TECH: "Tech team",
+  DESIGN: "Design team",
 } as const;
 
 export type Product = {
@@ -59,47 +59,51 @@ export type FilterType = keyof typeof FILTERS;
 
 // Team data
 export const TEAM_MEMBERS: TeamMember[] = [
+
+  // ── Team Leads ──────────────────────────────────────────
   {
     name: "Michael S. Olukayode",
-    department: "OPERATIONS",
+    department: "LEADS",
     country: "NG",
     role: "Founder & Executive Director",
     img: "/assets/images/MichaelOlukayode.jpg",
   },
   {
     name: "Khadijah Abdul Juma",
-    department: "ADVISORS",
+    department: "LEADS",
     country: "KE",
     role: "Advisor on Partnership and Growth Network",
     img: "/assets/images/Khadija-Abdul.png",
   },
   {
-    role: "Secretary, Board of Trustees",
-    department: "TRUSTEES",
-    country: "NG",
     name: "Imam Bashir Abdulwahab",
+    department: "LEADS",
+    country: "NG",
+    role: "Secretary, Board of Trustees",
     img: "/assets/images/Imam-Bashir.JPG",
   },
   {
-    name: "Irene Chidinma Ezechi",
-    role: "Regional Program manager",
-    department: "OPERATIONS",
-    country: "NG",
-    img: "/assets/images/Irene-Ezechi.jpg",
-  },
-  {
-    name: "Iretioluwa Ogunmola",
-    department: "TECH",
-    role: "Product Management Lead",
-    country: "NG",
-    img: "/assets/images/Ireti.jpeg",
-  },
-  {
     name: "Precious Oparanozie",
-    department: "ADVISORS",
+    department: "LEADS",
     role: "Advisor on Legal & Policy",
     country: "NG",
     img: "/assets/images/PreciousChidinma.jpg",
+  },
+  {
+    name: "Oluwole Feranmi",
+    department: "LEADS",
+    role: "Operations Manager",
+    country: "NG",
+    img: "/assets/images/FeranmiOluwole.JPG",
+  },
+
+  // ── Operations ──────────────────────────────────────────
+  {
+    name: "Irene Chidinma Ezechi",
+    department: "OPERATIONS",
+    country: "NG",
+    role: "Regional Program manager",
+    img: "/assets/images/Irene-Ezechi.jpg",
   },
   {
     name: "Okikiolu Eniola-Glory Fiyinfoluwa",
@@ -123,20 +127,6 @@ export const TEAM_MEMBERS: TeamMember[] = [
     img: "/assets/images/afolabi.jpeg",
   },
   {
-    name: "Olatunji-Aresa A. Olamide",
-    department: "TECH",
-    country: "NG",
-    role: "Frontend Engineer",
-    img: "/assets/images/AriyoAresa.jpg",
-  },
-  {
-    name: "Mercy Kalu",
-    department: "TECH",
-    country: "NG",
-    role: "Product Designer",
-    img: "/assets/images/MercyKalu.jpg",
-  },
-  {
     name: "Mariam Jimoh",
     department: "OPERATIONS",
     country: "NG",
@@ -158,117 +148,135 @@ export const TEAM_MEMBERS: TeamMember[] = [
     img: "/assets/images/Neh-Glory.jpeg",
   },
   {
+    name: "Shukurat O. Abdulkadir",
+    department: "OPERATIONS",
+    country: "NG",
+    role: "Project Manager - Digital Literacy (CyberSec.)",
+    img: "/assets/images/ShukuratAbdulkadir.jpg",
+  },
+
+  // ── Tech Team ────────────────────────────────────────────
+  {
+    name: "Iretioluwa Ogunmola",
+    department: "TECH",
+    country: "NG",
+    role: "Product Management Lead",
+    img: "/assets/images/Ireti.jpeg",
+  },
+  {
+    name: "Olatunji-Aresa A. Olamide",
+    department: "TECH",
+    country: "NG",
+    role: "Frontend Engineer",
+    img: "/assets/images/AriyoAresa.jpg",
+  },
+  {
     name: "Boluwatife Adeleke",
     department: "TECH",
-    role: "Product Marketing Manager",
     country: "NG",
+    role: "Product Marketing Manager",
     img: "/assets/images/Boluwatife-Mercy.jpeg",
   },
   {
     name: "Fashoyin Olujimi Temitope",
     department: "TECH",
+    country: "NG",
     role: "Data Analyst",
-    country: "NG",
     img: "/assets/images/Olujimi-Fashoyin.jpg",
-  },
-  {
-    name: "Abraham Ekundayo",
-    department: "TECH",
-    role: "Product Designer",
-    country: "NG",
-    img: "/assets/images/AbrahamEkundayo.jpeg",
-  },
-  {
-    name: "Adeoye Esther Toluwanimi",
-    department: "TECH",
-    role: "Social Media Relations",
-    country: "NG",
-    img: "/assets/images/AdeoyeEsther.jpg",
   },
   {
     name: "Theresa Gyamfi",
     department: "TECH",
-    role: "GRC Analyst & Policy Engineer",
     country: "GH",
+    role: "GRC Analyst & Policy Engineer",
     img: "/assets/images/AsieduGyamfi.png",
-  },
-  {
-    name: "Shukurat O. Abdulkadir",
-    department: "OPERATIONS",
-    role: "Project Manager - Digital Literacy (CyberSec.)",
-    country: "NG",
-    img: "/assets/images/ShukuratAbdulkadir.jpg",
   },
   {
     name: "Obochi Happiness Adah",
     department: "TECH",
+    country: "NG",
     role: "Backend Engineer",
-    country: "NG",
     img: "/assets/images/HappinessObochi.jpg",
-  },
-  {
-    name: "Sodeeq Badejoko",
-    department: "TECH",
-    role: "Graphic Designer",
-    country: "NG",
-    img: "/assets/images/SodeeqBadejoko.png",
   },
   {
     name: "Abayomi Favour",
     department: "TECH",
-    role: "Software Engineer",
     country: "NG",
+    role: "Mobile Developer",
     img: "/assets/images/FavourAbayomi.jpg",
   },
   {
     name: "Ajigbayi Oluwafemi Tosin",
     department: "TECH",
-    role: "Software Engineer",
     country: "NG",
+    role: "Software Engineer",
     img: "/assets/images/OluwafemiAjigbayi.JPG",
   },
   {
     name: "Maxwell Oba-Joshua",
     department: "TECH",
-    role: "Full-Stack Engineer",
     country: "NG",
+    role: "Full-Stack Engineer",
     img: "/assets/images/MaxwellJoshua.jpg",
   },
   {
     name: "Olamilekan J. Aremu",
     department: "TECH",
-    role: "Full-Stack Engineer",
     country: "NG",
+    role: "Full-Stack Engineer",
     img: "/assets/images/OlamilekanAremu.jpg",
   },
   {
-    name: "Idowu Ayomide Victor",
+    name: "Adeoye Esther Toluwanimi",
     department: "TECH",
-    role: "Graphic Designer",
     country: "NG",
+    role: "Social Media Relations",
+    img: "/assets/images/AdeoyeEsther.jpg",
+  },
+
+  // ── Design Team ──────────────────────────────────────────
+  {
+    name: "Mercy Kalu",
+    department: "DESIGN",
+    country: "NG",
+    role: "Product Designer",
+    img: "/assets/images/MercyKalu.jpg",
+  },
+  {
+    name: "Abraham Ekundayo",
+    department: "DESIGN",
+    country: "NG",
+    role: "Product Designer",
+    img: "/assets/images/AbrahamEkundayo.jpeg",
+  },
+  {
+    name: "Sodeeq Badejoko",
+    department: "DESIGN",
+    country: "NG",
+    role: "Graphic Designer",
+    img: "/assets/images/SodeeqBadejoko.png",
+  },
+  {
+    name: "Idowu Ayomide Victor",
+    department: "DESIGN",
+    country: "NG",
+    role: "Graphic Designer",
     img: "/assets/images/AyomideIdowu.jpg",
   },
   {
-    name: "Oluwole Feranmi",
-    department: "OPERATIONS",
-    role: "Social Media Relations",
-    country: "NG",
-    img: "/assets/images/FeranmiOluwole.JPG",
-  },
-  {
     name: "Beloved-John Adejumo",
-    department: "TECH",
-    role: "Graphic Designer",
+    department: "DESIGN",
     country: "NG",
+    role: "Graphic Designer",
     img: "/assets/images/Beloved-john.jpg",
   },
   {
     name: "Ayegbusi Bright Temitope",
-    department: "TECH",
-    role: "Graphic Designer",
+    department: "DESIGN",
     country: "NG",
+    role: "Graphic Designer",
     img: "/assets/images/AyegbusiBright.jpg",
-  }
+  },
 ];
 
 export const products: Product[] = [

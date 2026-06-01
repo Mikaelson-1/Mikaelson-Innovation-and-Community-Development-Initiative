@@ -19,7 +19,7 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mikaelson Initiative | Elevating Humanity Through Technology",
+    default: "Mikaelson Initiative | Community & Technology Infrastructure for Discipline, Habit Leadership & Sustainable Growth in Education",
     template: "%s | Mikaelson Initiative",
   },
   description:
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Mikaelson Initiative",
-    title: "Mikaelson Initiative | Elevating Humanity Through Technology",
+    title: "Mikaelson Initiative | Community & Technology Infrastructure for Discipline, Habit Leadership & Sustainable Growth in Education",
     description:
       "Join the Mikaelson Initiative to build a better Africa through innovation, community, and impact-driven technology.",
     images: [

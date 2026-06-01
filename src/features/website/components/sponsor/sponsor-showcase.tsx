@@ -32,7 +32,7 @@ export const SponsorsShowcase: React.FC = () => {
         </h2>
       </div>
       <div className="max-w-[1200px] mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-80 hover:opacity-100 transition-opacity duration-500">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center opacity-80 hover:opacity-100 transition-opacity duration-500">
           <div className="p-6 bg-white dark:bg-brand-dark-bg-card rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 w-full flex items-center justify-center h-32">
             <Image
               src="/assets/images/Google.png"
@@ -54,18 +54,36 @@ export const SponsorsShowcase: React.FC = () => {
           <div className="p-6 bg-white dark:bg-brand-dark-bg-card rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 w-full flex items-center justify-center h-32">
             <Image
               src="/assets/images/Canva.png"
-              alt="Partner Organization"
+              alt="Canva"
               width={120}
               height={50}
               className="object-contain grayscale hover:grayscale-0 transition-all duration-500"
             />
           </div>
           <div className="p-6 bg-white dark:bg-brand-dark-bg-card rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 w-full flex items-center justify-center h-32">
-             <Image
+            <Image
               src="/assets/images/Adobe-Express.png"
-              alt="Mikaelson Initiative"
+              alt="Adobe Express"
               width={120}
               height={50}
+              className="object-contain grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
+          <div className="p-6 bg-white dark:bg-brand-dark-bg-card rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 w-full flex items-center justify-center h-32">
+            <Image
+              src="/assets/images/Anthropic.svg"
+              alt="Anthropic"
+              width={160}
+              height={18}
+              className="object-contain grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
+          <div className="p-6 bg-white dark:bg-brand-dark-bg-card rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-all duration-300 w-full flex items-center justify-center h-32">
+            <Image
+              src="/assets/images/OpenAI.svg"
+              alt="OpenAI"
+              width={140}
+              height={38}
               className="object-contain grayscale hover:grayscale-0 transition-all duration-500"
             />
           </div>

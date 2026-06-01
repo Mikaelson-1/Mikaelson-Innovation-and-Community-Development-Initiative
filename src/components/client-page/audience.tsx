@@ -1,141 +1,133 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 import { audience } from "./data";
 
 export default function WhoItsFor() {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrent((prev) => (prev + 1) % audience.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goTo = (index: number) => {
-    setDirection(index > current ? 1 : -1);
-    setCurrent(index);
-  };
-
-  const item = audience[current];
-  const Icon = item.icon;
-
-  const variants = {
-    enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0 }),
-    center: { x: "0%", opacity: 1 },
-    exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0 }),
-  };
+  const [active, setActive] = useState(0);
 
   return (
-    <section className="py-24  md:px-10 bg-white dark:bg-[#050a0a] overflow-hidden transition-colors duration-300">
+    <section className="py-24 md:px-10 bg-white dark:bg-[#050a0a]">
       <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
 
-        {/* header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
-          <div>
-            <p className="text-[#5CE1E6] text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-              Our Audience
-            </p>
-            <h2 className="text-[clamp(2rem,4.5vw,2.8rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#111] dark:text-white max-w-sm">
-              Who Mikaelson<br />Is For
-            </h2>
+          {/* left: title + accordion */}
+          <div className="flex flex-col gap-10">
+
+            <div>
+              <p className="text-[#5CE1E6] text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+                Our Audience
+              </p>
+              <h2 className="text-[clamp(2rem,4.5vw,2.8rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#111] dark:text-white">
+                Who We Serve
+              </h2>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              {audience.map((item, i) => {
+                const isActive = active === i;
+                return (
+                  <motion.div
+                    key={item.number}
+                    layout
+                    onClick={() => setActive(i)}
+                    className={`cursor-pointer rounded-2xl border transition-colors duration-200 overflow-hidden ${
+                      isActive
+                        ? "border-[#5CE1E6] bg-white dark:bg-white/[0.04]"
+                        : "border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-transparent hover:border-[#5CE1E6]/40"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4 px-5 py-4">
+                      <span className="text-[10px] font-bold text-[#5CE1E6] tracking-[0.18em] w-5 shrink-0">
+                        {item.number}
+                      </span>
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-200 ${
+                          isActive
+                            ? "bg-[#5CE1E6] text-black"
+                            : "bg-black/[0.05] dark:bg-white/[0.06] text-[#555] dark:text-white/50"
+                        }`}
+                      >
+                        <item.icon size={16} strokeWidth={2} />
+                      </div>
+                      <span
+                        className={`flex-1 font-bold text-[15px] transition-colors duration-200 ${
+                          isActive
+                            ? "text-[#111] dark:text-white"
+                            : "text-[#333] dark:text-white/70"
+                        }`}
+                      >
+                        {item.title}
+                      </span>
+                      {isActive ? (
+                        <ChevronDown size={15} className="text-[#5CE1E6] shrink-0" />
+                      ) : (
+                        <ChevronRight size={15} className="text-[#aaa] dark:text-white/30 shrink-0" />
+                      )}
+                    </div>
+
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <p
+                            className="px-5 pb-5 text-sm text-[#555] dark:text-white/50 leading-relaxed"
+                            style={{ paddingLeft: "4.25rem" }}
+                          >
+                            {item.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
-          <p className="text-base text-[#555] dark:text-white/50 leading-relaxed max-w-md md:text-right">
-            Mikaelson Initiative is designed for African students who are committed to growth,
-            discipline, and building meaningful impact within their schools and communities.
-          </p>
-        </div>
 
-        {/* carousel */}
-        <div className="relative w-full overflow-hidden rounded-2xl" style={{ height: "520px" }}>
-          <AnimatePresence custom={direction} mode="popLayout">
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
-              className="absolute inset-0 rounded-2xl overflow-hidden"
-            >
-              {/* image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-
-              {/* dark overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-
-              {/* content anchored bottom-left */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 flex flex-col gap-3">
-                <span className="text-[#5CE1E6] text-xs font-bold tracking-[0.2em] uppercase">
-                  {item.number} · Our Audience
-                </span>
-                <h3 className="text-[clamp(1.6rem,4vw,2.4rem)] font-extrabold text-white leading-[1.1] tracking-[-0.03em] max-w-xl">
-                  {item.title}
-                </h3>
-                <p className="text-white/65 text-sm md:text-base leading-relaxed max-w-lg">
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-         
-          
-        </div>
-
-        {/* dot indicators + slide titles */}
-        <div className="mt-6 flex items-center  justify-between gap-4">
-          {/* titles row */}
-          <div className="hidden md:flex items-center gap-6 overflow-x-auto">
-            {audience.map((a, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`text-sm font-semibold whitespace-nowrap transition-all duration-300 pb-1 border-b-2 ${
-                  i === current
-                    ? "text-[#5CE1E6] dark:text-[#5CE1E6]"
-                    : "text-black dark:text-white border-transparent hover:text-[#555] dark:hover:text-white/60"
-                }`}
+          {/* right: image — top aligns with the title */}
+          <div
+            className="relative rounded-2xl overflow-hidden lg:sticky lg:top-24"
+            style={{ aspectRatio: "4/5" }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0"
               >
-                {a.title}
-              </button>
-            ))}
+                <Image
+                  src={audience[active].image}
+                  alt={audience[active].title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p className="text-[#5CE1E6] text-[10px] font-bold tracking-[0.22em] uppercase mb-2">
+                    Who We Serve
+                  </p>
+                  <h3 className="text-white text-xl md:text-2xl font-extrabold tracking-tight leading-snug">
+                    {audience[active].title}
+                  </h3>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* dots — mobile */}
-          <div className="flex md:hidden items-center  gap-2">
-            {audience.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className="transition-all duration-300 rounded-full bg-[#5CE1E6]"
-                style={{
-                  width: i === current ? "1.75rem" : "0.5rem",
-                  height: "0.5rem",
-                  opacity: i === current ? 1 : 0.3,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* progress counter */}
-          <span className="text-xs  font-bold text-[#999] dark:text-white/30 tabular-nums shrink-0">
-            {String(current + 1).padStart(2, "0")} / {String(audience.length).padStart(2, "0")}
-          </span>
         </div>
-
       </div>
     </section>
   );
