@@ -7,15 +7,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { ModeToggle } from "./mode-toggler";
+import { cn } from "@/lib/utils";
 
-// Types
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
 interface NavLink {
   label: string;
   href: string;
+  dropdown?: DropdownItem[];
 }
 
 interface ActionButton {
@@ -34,39 +40,88 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   navLinks,
   actionButton,
 }) => {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggle = (label: string) =>
+    setOpenDropdown((prev) => (prev === label ? null : label));
+
   return (
     <div className="lg:hidden flex items-center gap-2">
       <Sheet>
         <SheetTrigger asChild>
-          <Menu className="h-6 w-6 dark:text-white" />
+          <button aria-label="Open menu">
+            <Menu className="h-6 w-6 dark:text-white" />
+          </button>
         </SheetTrigger>
         <SheetContent side="right" className="w-64 sm:w-80">
           <SheetHeader>
             <SheetTitle className="sr-only">{brandName}</SheetTitle>
           </SheetHeader>
-          <div className="mt-6 px-5 flex flex-col gap-6 text-gray-700">
-            {navLinks.map((link) => (
-              <SheetClose asChild key={link.label}>
-                <Link
-                  href={link.href}
-                  className="text-base transition-colors hover:text-gray-900 dark:text-brand-text-dark-heading"
-                >
-                  {link.label}
-                </Link>
-              </SheetClose>
-            ))}
+
+          <nav className="mt-6 px-5 flex flex-col gap-0.5">
+            {navLinks.map((link) => {
+              if (link.dropdown) {
+                const isOpen = openDropdown === link.label;
+                return (
+                  <div key={link.label}>
+                    <button
+                      onClick={() => toggle(link.label)}
+                      className="flex items-center justify-between w-full px-2 py-2.5 rounded-lg text-[15px] font-medium text-gray-700 dark:text-white/80 hover:text-[#5CE1E6] dark:hover:text-[#5CE1E6] hover:bg-[#5CE1E6]/5 transition-colors duration-150"
+                    >
+                      {link.label}
+                      <ChevronDown
+                        size={15}
+                        strokeWidth={2.5}
+                        className={cn(
+                          "text-gray-400 dark:text-white/40 transition-transform duration-200",
+                          isOpen && "rotate-180 text-[#5CE1E6]"
+                        )}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div className="ml-3 mb-1 pl-3 border-l-2 border-[#5CE1E6]/30 flex flex-col gap-0.5">
+                        {link.dropdown.map((item) => (
+                          <SheetClose asChild key={item.label + item.href}>
+                            <Link
+                              href={item.href}
+                              className="px-2 py-2 text-sm text-gray-600 dark:text-white/60 hover:text-[#5CE1E6] dark:hover:text-[#5CE1E6] rounded-md hover:bg-[#5CE1E6]/5 transition-colors duration-150"
+                            >
+                              {item.label}
+                            </Link>
+                          </SheetClose>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return (
+                <SheetClose asChild key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="px-2 py-2.5 rounded-lg text-[15px] font-medium text-gray-700 dark:text-white/80 hover:text-[#5CE1E6] dark:hover:text-[#5CE1E6] hover:bg-[#5CE1E6]/5 transition-colors duration-150"
+                  >
+                    {link.label}
+                  </Link>
+                </SheetClose>
+              );
+            })}
 
             {actionButton && (
-              <SheetClose asChild>
-                <Link
-                  href={actionButton.href}
-                  className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-black"
-                >
-                  {actionButton.label}
-                </Link>
-              </SheetClose>
+              <div className="pt-5">
+                <SheetClose asChild>
+                  <Link
+                    href={actionButton.href}
+                    className="inline-flex items-center justify-center w-full rounded-xl bg-[#5CE1E6] px-5 py-2.5 text-sm font-semibold text-black hover:bg-[#4bcdd2] transition-colors"
+                  >
+                    {actionButton.label}
+                  </Link>
+                </SheetClose>
+              </div>
             )}
-          </div>
+          </nav>
         </SheetContent>
       </Sheet>
       <ModeToggle />

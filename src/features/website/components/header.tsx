@@ -27,7 +27,6 @@ interface ActionButton {
 interface HeaderProps {
   brandName?: string;
   navLinks?: NavLink[];
-  mobileNavLinks?: { label: string; href: string }[];
   actionButton?: ActionButton;
 }
 
@@ -63,19 +62,6 @@ const Header: React.FC<HeaderProps> = ({
         { label: "Contact Us", href: "/contact" },
       ],
     },
-    { label: "Our Blog", href: "/blog" },
-  ],
-  mobileNavLinks = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about-us" },
-    { label: "Our Team", href: "/team" },
-    { label: "Our Ecosystem", href: "/#our-ecosystem" },
-    { label: "Our Product", href: "/product" },
-    { label: "Mikaelson Labs", href: "/labs" },
-    { label: "The Mikaelson Community", href: "/community" },
-    { label: "Sponsor a Project", href: "/sponsor" },
-    { label: "Partner with Us", href: "/contact" },
-    { label: "Volunteer with Us", href: "/volunteer" },
     { label: "Our Blog", href: "/blog" },
   ],
   actionButton = { label: "Sponsor a program", href: "/sponsor" },
@@ -204,7 +190,7 @@ const Header: React.FC<HeaderProps> = ({
         {/* mobile */}
         <MobileNav
           brandName={brandName}
-          navLinks={mobileNavLinks}
+          navLinks={navLinks}
           actionButton={actionButton}
         />
       </div>
