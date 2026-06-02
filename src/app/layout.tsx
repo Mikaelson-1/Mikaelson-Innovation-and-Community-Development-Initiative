@@ -121,7 +121,7 @@ export default function RootLayout({
       <head>
         <Script
           src="https://t.contentsquare.net/uxa/637962adff02e.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="gtm-script"

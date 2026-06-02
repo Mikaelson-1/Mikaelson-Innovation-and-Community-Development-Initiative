@@ -4,6 +4,7 @@ import React from "react";
 import WavyBackground from "../hero-components/wavy-web";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { YouTubeFacade } from "@/components/youtube-facade";
 
 const Hero: React.FC = () => {
   return (
@@ -104,15 +105,9 @@ const Hero: React.FC = () => {
               <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-[#5CE1E6] rounded-bl-2xl z-20" />
               <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-[#5CE1E6] rounded-br-2xl z-20" />
 
-              {/*video here */}
-
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/pkV81B9k_7E?autoplay=1&mute=1"
+              <YouTubeFacade
+                videoId="pkV81B9k_7E"
                 title="WE ARE LIVE! Introducing the All-New Mikaelson Initiative Website!"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
               />
             </div>
           </motion.div>

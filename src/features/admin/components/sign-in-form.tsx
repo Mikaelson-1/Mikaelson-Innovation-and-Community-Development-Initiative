@@ -41,7 +41,6 @@ const AdminSignInForm = () => {
 
     // manual login 
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-  console.log("🔵 Form submitted with:", values);
   setLoginError("");
   setIsLoggingIn(true);
 

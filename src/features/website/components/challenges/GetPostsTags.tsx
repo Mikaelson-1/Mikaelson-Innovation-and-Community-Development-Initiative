@@ -403,6 +403,9 @@ export const GettAllPosts = ({
                   <img
                     src={post.user.profileImage}
                     alt={post.user.username}
+                    loading="lazy"
+                    width={32}
+                    height={32}
                     className="w-full h-full object-cover rounded-full"
                   />
                 ) : (
