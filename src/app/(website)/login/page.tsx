@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import SignInForm from "@/features/website/components/auth/sign-in-form";
 import React from "react";
 

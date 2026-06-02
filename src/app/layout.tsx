@@ -90,6 +90,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+  const inner = (
+    <QueryProvider>
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-M2GCJCC8"
+          height={0}
+          width={0}
+          style={{ display: "none", visibility: "hidden" }}
+        />
+      </noscript>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <div id="main-content">
+          {children}
+          <Toaster position="top-center" richColors />
+        </div>
+      </ThemeProvider>
+    </QueryProvider>
+  );
+
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
@@ -112,31 +138,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} antialiased`}>
-        <ClerkProvider
-          publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}
-        >
-          <QueryProvider>
-            <noscript>
-              <iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-M2GCJCC8"
-                height={0}
-                width={0}
-                style={{ display: "none", visibility: "hidden" }}
-              />
-            </noscript>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <div id="main-content">
-                {children}
-                <Toaster position="top-center" richColors />
-              </div>
-            </ThemeProvider>
-          </QueryProvider>
-        </ClerkProvider>
+        {clerkKey ? (
+          <ClerkProvider publishableKey={clerkKey}>{inner}</ClerkProvider>
+        ) : (
+          inner
+        )}
       </body>
     </html>
   );

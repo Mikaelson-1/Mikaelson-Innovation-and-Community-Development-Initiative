@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({
       href: "/sponsor",
       dropdown: [
         { label: "Sponsor a Project", href: "/sponsor" },
-        { label: "Partner with Us", href: "/contact" },
+        { label: "Partner with Us", href: "/partners" },
         { label: "Volunteer with Us", href: "/volunteer" },
         { label: "Contact Us", href: "/contact" },
       ],
@@ -121,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({
                     <div className="bg-white dark:bg-[#1a1a1a] border border-black/[0.08] dark:border-white/[0.08] rounded-xl shadow-lg shadow-black/[0.06] overflow-hidden min-w-[170px] py-1">
                       {link.dropdown.map((item) => (
                         <Link
-                          key={item.href}
+                          key={item.label}
                           href={item.href}
                           className={cn(
                             "flex items-center px-4 py-2.5 text-sm transition-colors duration-150",

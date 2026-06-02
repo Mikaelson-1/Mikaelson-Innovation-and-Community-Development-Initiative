@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-dynamic';
 
 import { Suspense } from "react";
 import VerifyEmail from "@/features/website/components/auth/verify-email";

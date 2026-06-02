@@ -23,8 +23,12 @@ interface Post {
 
 // Pre-generate all post slugs at build time
 export async function generateStaticParams() {
-  const posts = await client.fetch(allPostsQuery);
-  return posts.map((post: Post) => ({ slug: post.slug.current }));
+  try {
+    const posts = await client.fetch(allPostsQuery);
+    return posts.map((post: Post) => ({ slug: post.slug.current }));
+  } catch {
+    return [];
+  }
 }
 
 // Dynamic metadata per post
@@ -34,7 +38,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post: Post = await client.fetch(postBySlugQuery, { slug });
+  let post: Post | null = null;
+  try {
+    post = await client.fetch(postBySlugQuery, { slug });
+  } catch {
+    return { title: "Blog | Mikaelson Initiative" };
+  }
 
   if (!post) return { title: "Post Not Found" };
 
@@ -205,13 +214,23 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
 
-  const post: Post = await client.fetch(postBySlugQuery, { slug });
+  let post: Post | null = null;
+  try {
+    post = await client.fetch(postBySlugQuery, { slug });
+  } catch {
+    notFound();
+  }
   if (!post) notFound();
 
-  const related: Post[] = await client.fetch(relatedPostsQuery, {
-    category: post.category,
-    slug,
-  });
+  let related: Post[] = [];
+  try {
+    related = await client.fetch(relatedPostsQuery, {
+      category: post.category,
+      slug,
+    });
+  } catch {
+    related = [];
+  }
 
   const ogImage = post.coverImage
     ? urlFor(post.coverImage).width(1200).height(630).url()

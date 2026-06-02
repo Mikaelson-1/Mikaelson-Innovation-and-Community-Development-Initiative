@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import CreateAccountForm from "@/features/website/components/auth/create-account-form";
 import React from "react";
 
