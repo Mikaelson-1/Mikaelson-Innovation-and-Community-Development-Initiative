@@ -112,7 +112,7 @@ export default function WhoItsFor() {
                   alt={audience[active].title}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1023px) calc(100vw - 40px), 640px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">

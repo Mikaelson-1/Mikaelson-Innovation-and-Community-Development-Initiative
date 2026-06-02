@@ -70,6 +70,20 @@
     "xlsx": "^0.18.5",
     "zod": "^4.1.11"
   },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not ie 11",
+      "not op_mini all",
+      "supports es6-module"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",

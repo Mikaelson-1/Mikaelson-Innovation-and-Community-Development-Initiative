@@ -1,59 +1,73 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ecosystems } from "./data";
 
-// eco-block
-export function EcosystemBlock({ eco }: { eco: (typeof ecosystems)[0] }) {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      const ctx = gsap.context(() => {
-        const cards = gsap.utils.toArray<HTMLElement>(
-          sectionRef.current?.querySelectorAll(".eco-card-" + eco.id) ?? [],
-        );
-        cards.forEach((card, i) => {
-          gsap.set(card, { yPercent: 80, scale: 0.95, opacity: 0, zIndex: i });
-          gsap.to(card, {
-            yPercent: 0,
-            scale: 1,
-            opacity: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: `top -=${i * 20}%`,
-              end: `+=20%`,
-              scrub: 1.2,
-            },
-          });
-        });
-
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${eco.bullets.length * 20}%`,
-          pin: true,
-          scrub: 1.2,
-          
-        });
-      }, sectionRef);
-
-      return () => ctx.revert();
-    });
-
-    return () => mm.revert();
-  }, [eco.id, eco.bullets.length]);
-
+// Shared card internals — reused on both mobile and desktop
+function EcoCard({
+  eco,
+  bullet,
+  index,
+}: {
+  eco: (typeof ecosystems)[0];
+  bullet: string;
+  index: number;
+}) {
   return (
-    <div className="relative ">
-      {/* mobile cards */}
+    <>
+      {/* glow */}
+      <div
+        className="absolute top-0 left-0 w-[55%] h-[65%] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 20% 20%, rgba(92,225,230,0.30) 0%, transparent 70%)",
+        }}
+      />
+      {/* grid texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#0097a7 1px, transparent 1px), linear-gradient(90deg, #0097a7 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      {/* big number */}
+      <div
+        className="absolute text-[#C9A84C]/40 top-4 left-6 font-black leading-none pointer-events-none select-none"
+        style={{ fontSize: "clamp(80px, 10vw, 160px)", letterSpacing: "-0.05em" }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </div>
+      {/* content */}
+      <div className="relative z-10 max-w-2xl">
+        <p className="text-[#0097a7] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+          {eco.label} · Point {index + 1}
+        </p>
+        <p
+          className="font-bold mb-8 leading-[1.3] tracking-[-0.02em] text-[#050a0a]"
+          style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.2rem)" }}
+        >
+          {bullet}
+        </p>
+      </div>
+      {/* bottom accent */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[2px]"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #5CE1E6 40%, #5CE1E6 60%, transparent)",
+          opacity: 0.4,
+        }}
+      />
+    </>
+  );
+}
+
+export function EcosystemBlock({ eco }: { eco: (typeof ecosystems)[0] }) {
+  return (
+    <div className="w-full px-4 md:px-6">
+      {/* Mobile: stacked cards */}
       <div className="md:hidden flex flex-col gap-3 pb-10">
         {eco.bullets.map((bullet, i) => (
           <motion.div
@@ -62,147 +76,30 @@ export function EcosystemBlock({ eco }: { eco: (typeof ecosystems)[0] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
-            className="relative rounded-2xl border border-[#5CE1E6]/30 bg-[#d0f4f6] text-[#050a0a] overflow-hidden"
+            className="relative rounded-2xl border border-[#5CE1E6]/30 bg-[#d0f4f6] text-[#050a0a] overflow-hidden p-6 flex flex-col justify-end"
+            style={{ minHeight: "160px" }}
           >
-            {/* glow */}
-            <div
-              className="absolute top-0 left-0 w-[55%] h-[65%] pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 20% 20%, rgba(92,225,230,0.25) 0%, transparent 70%)",
-              }}
-            />
-            {/* grid texture */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-[0.06]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(#0097a7 1px, transparent 1px), linear-gradient(90deg, #0097a7 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
-              }}
-            />
-
-            <div className="relative z-10 p-6">
-              {/* top row: step label + number */}
-              <div className="flex items-center justify-between mb-5">
-                <span className="text-[#0097a7] text-[10px] font-bold tracking-[0.2em] uppercase">
-                  {eco.label} · {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  className="font-black text-[#C9A84C]/40 leading-none select-none pointer-events-none"
-                  style={{ fontSize: "52px", letterSpacing: "-0.05em" }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* bullet text */}
-              <p className="text-[#050a0a]/80 text-[13px] leading-relaxed font-medium">
-                {bullet}
-              </p>
-
-              {/* tags */}
-              {/* <div className="flex flex-wrap gap-2 mt-5">
-                {eco.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full text-[11px] font-medium border border-[#0097a7]/40 text-[#0097a7] bg-[#0097a7]/10"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div> */}
-            </div>
-
-            {/* bottom accent */}
-            <div
-              className="h-[1.5px] w-full"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, #5CE1E6 40%, #5CE1E6 60%, transparent)",
-                opacity: 0.3,
-              }}
-            />
+            <EcoCard eco={eco} bullet={bullet} index={i} />
           </motion.div>
         ))}
       </div>
 
-      {/* desktop cards */}
-      <section
-        ref={sectionRef}
-        className="relative hidden md:flex items-center justify-center overflow-hidden"
-        style={{ height: "100dvh" }}
-      >
-        <div className="relative w-full max-w-6xl" style={{ height: "72vh" }}>
-          {eco.bullets.map((bullet, i) => (
-            <div
-              key={i}
-              className={`eco-card-${eco.id} absolute inset-0 rounded-3xl border border-[#5CE1E6]/60 p-12 flex flex-col justify-end bg-[#d0f4f6] text-[#050a0a] overflow-hidden`}
-            >
-              {/* subtle glow */}
-              <div
-                className="absolute top-0 left-0 w-[55%] h-[65%] pointer-events-none"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 20% 20%, rgba(92,225,230,0.30) 0%, transparent 70%)",
-                }}
-              />
-              {/* grid texture */}
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.06]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(#0097a7 1px, transparent 1px), linear-gradient(90deg, #0097a7 1px, transparent 1px)",
-                  backgroundSize: "40px 40px",
-                }}
-              />
-              {/* BIG NUMBER */}
-              <div
-                className="absolute text-[#C9A84C]/40 top-4 left-6 font-black leading-none pointer-events-none select-none"
-                style={{
-                  fontSize: "clamp(120px, 14vw, 200px)",
-                  letterSpacing: "-0.05em",
-                }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </div>
-
-              {/* content */}
-              <div className="relative z-10 max-w-2xl">
-                <p className="text-[#0097a7] text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-                  {eco.label} · Point {i + 1}
-                </p>
-                <p
-                  className="font-bold mb-8 leading-[1.3] tracking-[-0.02em] text-[#050a0a]"
-                  style={{ fontSize: "clamp(0.95rem, 1.6vw, 1.2rem)" }}
-                >
-                  {bullet}
-                </p>
-                {/* <div className="flex flex-wrap gap-3">
-                  {eco.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 rounded-full text-sm font-medium border border-[#0097a7]/40 text-[#0097a7] bg-[#0097a7]/10"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div> */}
-              </div>
-
-              {/* bottom accent */}
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[2px]"
-                style={{
-                  background:
-                    "linear-gradient(90deg, transparent, #5CE1E6 40%, #5CE1E6 60%, transparent)",
-                  opacity: 0.4,
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Desktop: flowing cards with staggered whileInView — no GSAP, no forced reflow */}
+      <div className="hidden md:flex flex-col gap-5 w-full max-w-6xl mx-auto">
+        {eco.bullets.map((bullet, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: i * 0.09, ease: "easeOut" }}
+            className="relative rounded-3xl border border-[#5CE1E6]/60 p-12 flex flex-col justify-end bg-[#d0f4f6] text-[#050a0a] overflow-hidden"
+            style={{ minHeight: "280px" }}
+          >
+            <EcoCard eco={eco} bullet={bullet} index={i} />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -212,10 +109,8 @@ export default function EcosystemSection({
 }: {
   activeIndex: number;
 }) {
- 
-
   return (
-    <div className="w-full">
+    <div className="w-full py-4">
       <EcosystemBlock eco={ecosystems[activeIndex]} />
     </div>
   );
