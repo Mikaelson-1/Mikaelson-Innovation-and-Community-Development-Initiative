@@ -1,24 +1,31 @@
 import HomeHero from "@/components/client-page/hero";
-import ImpactSection from "@/features/website/components/impact-section";
-// import IntroVideo from "@/components/client-page/intro-video";
-import BlogSectionWrapper from "./blog-wrapper";
-// import WhatWeDo from "./what-we-do";
-import OurEcosystemTabs from "@/components/client-page/our-ecosystem";
-import WhoItsFor from "./audience";
-// import CommunitySection from "@/components/client-page/community-section";
-export default function Home() {
+import dynamic from "next/dynamic";
 
+// Below-fold sections are code-split so their JS doesn't inflate the
+// initial bundle or block main-thread parsing during hero render.
+const OurEcosystemTabs = dynamic(() => import("@/components/client-page/our-ecosystem"), {
+  loading: () => <div className="py-24" />,
+});
+const WhoItsFor = dynamic(() => import("@/components/client-page/audience"), {
+  loading: () => <div className="py-24" />,
+});
+const ImpactSection = dynamic(
+  () => import("@/features/website/components/impact-section"),
+  { loading: () => <div className="py-16" /> }
+);
+const BlogSectionWrapper = dynamic(() => import("@/components/client-page/blog-wrapper"), {
+  loading: () => <div className="py-16" />,
+});
+
+export default function Home() {
   return (
     <>
       <HomeHero />
 
-      <main className="bg-[#ffffff] dark:bg-background px-5 lg:px-0 ">
-        {/* <IntroVideo /> */}
-        {/* <WhatWeDo /> */}
+      <main className="bg-[#ffffff] dark:bg-background px-5 lg:px-0">
         <OurEcosystemTabs />
         <WhoItsFor />
         <ImpactSection />
-        {/* <CommunitySection /> */}
         <BlogSectionWrapper />
       </main>
     </>

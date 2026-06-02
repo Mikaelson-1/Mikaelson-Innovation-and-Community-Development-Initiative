@@ -108,6 +108,7 @@ const Hero: React.FC = () => {
               <YouTubeFacade
                 videoId="pkV81B9k_7E"
                 title="WE ARE LIVE! Introducing the All-New Mikaelson Initiative Website!"
+                priority
               />
             </div>
           </motion.div>

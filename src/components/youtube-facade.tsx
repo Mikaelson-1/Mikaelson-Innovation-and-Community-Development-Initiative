@@ -7,9 +7,17 @@ interface YouTubeFacadeProps {
   videoId: string;
   title: string;
   className?: string;
+  /** Set to true when the element is in the initial viewport (hero) so the
+   *  thumbnail is preloaded as a high-priority resource and becomes the LCP. */
+  priority?: boolean;
 }
 
-export function YouTubeFacade({ videoId, title, className = "" }: YouTubeFacadeProps) {
+export function YouTubeFacade({
+  videoId,
+  title,
+  className = "",
+  priority = false,
+}: YouTubeFacadeProps) {
   const [loaded, setLoaded] = useState(false);
 
   if (loaded) {
@@ -35,13 +43,11 @@ export function YouTubeFacade({ videoId, title, className = "" }: YouTubeFacadeP
         src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
         alt={title}
         fill
+        priority={priority}
         className="object-cover"
-        loading="lazy"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      {/* dark overlay */}
       <span className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition-colors duration-200" />
-      {/* play button */}
       <span className="absolute inset-0 flex items-center justify-center">
         <span className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-200">
           <svg viewBox="0 0 24 24" fill="white" className="w-7 h-7 ml-1" aria-hidden="true">
