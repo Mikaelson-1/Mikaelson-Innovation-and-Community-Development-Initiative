@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
 type Project = {
   id: number;
@@ -12,75 +12,33 @@ type Project = {
   tags: string[];
   link?: string;
 };
+
 const projects: Project[] = [
   {
     id: 1,
-    title: "OpenTutor AI",
+    title: "RIO AI",
     category: "education",
-    description: "Connecting students with mentors across Nigeria",
+    description:
+      "AI-powered habit tracking and accountability platform helping African students build discipline, measure progress, and achieve sustainable growth.",
     image: "/assets/images/mikaelsonlogo.png",
     status: "active",
-    tags: ["Vue", "Node", "MongoDB"],
+    tags: ["AI", "Education", "Analytics"],
   },
   {
     id: 2,
-    title: "HealthTech Initiative",
-    category: "healthcare",
-    description: "Telemedicine platform for rural communities",
-    image: "/assets/images/mikaelsonlogo.png",
-    status: "completed",
-    tags: ["React", "Python", "PostgreSQL"],
-  },
-  {
-    id: 3,
-    title: "Smart Agriculture",
-    category: "agriculture",
-    description: "IoT solutions for modern farming",
-    image: "/assets/images/mikaelsonlogo.png",
-    status: "development",
-    tags: ["IoT", "ML", "Sensors"],
-  },
-  {
-    id: 4,
-    title: "PropertyInsight",
+    title: "Rental Hub",
     category: "real-estate",
     description:
-      "Data-driven platform optimizing property valuation and urban planning.",
-    image: "/assets/images/mikaelsonlogo.png",
-    status: "active",
-    tags: ["Analytics", "GIS", "Vue"],
-  },
-  {
-    id: 5,
-    title: "RentalHub NG",
-    category: "real-estate",
-    description:
-      "Platform simplifying rental property discovery, verification and tenant landlord management across Nigerian cities.",
+      "Platform simplifying rental property discovery, verification and tenant-landlord management across Nigerian cities.",
     image: "/assets/images/Rental hub.jpeg",
     status: "development",
-    tags: ["Vue", "Express", "GIS"],
-    link: "https://rentalhub.ng",
+    tags: ["Real Estate", "Nigeria", "Tech"],
+    link: "http://rentalhub.mikaelsoninitiative.org/",
   },
 ];
 
- const filters = [
-   "All",
-   "education",
-   "healthcare",
-   "agriculture",
-   "real-estate",
- ];
-
 const LabsFeaturedProjects: React.FC = () => {
- 
-
-  const [activeFilter, setActiveFilter] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return projects;
-    return projects.filter((project) => project.category === activeFilter);
-  }, [activeFilter]);
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-card">
@@ -96,26 +54,9 @@ const LabsFeaturedProjects: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition ${
-                activeFilter === filter
-                  ? "bg-indigo-600 text-white shadow"
-                  : "bg-gray-100 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          {projects.map((project) => (
             <div
               key={project.id}
               className="group bg-white rounded-2xl shadow hover:shadow-xl overflow-hidden cursor-pointer transition transform hover:-translate-y-1"

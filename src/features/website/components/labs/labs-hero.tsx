@@ -40,7 +40,7 @@ const LabsHeroSection: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link  href="/product" className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl shadow-lg transition-all duration-200">
+                  <Link  href="#projects" className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl shadow-lg transition-all duration-200">
                   Explore Projects
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                     <path
