@@ -15,7 +15,7 @@ const codeOfConductItems = [
     content: (
       <>
         <p>
-          The Mikaelson Innovation and Community Development Initiative
+          The Mikaelson Community Development And Tech Initiative
           (Mikaelson Initiative) is committed to creating a harassment-free,
           inclusive, and respectful environment for all community members,
           participants, volunteers, and staff.
@@ -156,7 +156,7 @@ const codeOfConductItems = [
       <div className="space-y-2">
         <h4 className="font-semibold">4.1 Event and Program Conduct</h4>
         <p>
-          During Mikaelson Innovation and Community Development Initiative
+          During Mikaelson Community Development And Tech Initiative
           (Mikaelson Initiative) events, workshops, programs, and activities:
         </p>
         <ul className="list-disc pl-6 space-y-1">

@@ -42,7 +42,7 @@
 
 ## 🎯 About the Project
 
-The **Mikaelson Innovation and Community Development Initiative** is a platform dedicated to empowering African communities through technology, education, and collaborative innovation. The web application serves as the digital hub for:
+The **Mikaelson Community Development And Tech Initiative** is a platform dedicated to empowering African communities through technology, education, and collaborative innovation. The web application serves as the digital hub for:
 
 - **The Mikaelson Community** — A vibrant network of ambitious students and changemakers united by excellence and intentional growth
 - **Mikaelson Labs** — An innovation hub where ideas are built and experimented with to solve challenges across Africa

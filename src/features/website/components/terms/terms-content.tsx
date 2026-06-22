@@ -48,7 +48,7 @@ const termsContent = [
           <dt className="font-semibold">&apos;Services&apos;</dt>
           <dd className="mb-2 pl-4">
             All products, services, platforms, and resources provided by the
-            Mikaelson Innovation and Community Development Initiative (Mikaelson
+            Mikaelson Community Development And Tech Initiative (Mikaelson
             Initiative), including but not limited to our website, community
             platform, educational programs, events, and labs.
           </dd>
@@ -59,7 +59,7 @@ const termsContent = [
           </dd>
           <dt className="font-semibold">&apos;Community&apos;</dt>
           <dd className="mb-2 pl-4">
-            The Mikaelson Innovation and Community Development Initiative
+            The Mikaelson Community Development And Tech Initiative
             (Mikaelson Initiative) community platform and all associated
             programs, events, and member interactions.
           </dd>
@@ -81,7 +81,7 @@ const termsContent = [
     content: (
       <div className="space-y-2">
         <p>
-          The Mikaelson Innovation and Community Development Initiative
+          The Mikaelson Community Development And Tech Initiative
           (Mikaelson Initiative) provides:
         </p>
         <ul className="space-y-1">
@@ -153,7 +153,7 @@ const termsContent = [
     content: (
       <div className="space-y-2">
         <p>
-          The Mikaelson Innovation and Community Development Initiative
+          The Mikaelson Community Development And Tech Initiative
           (Mikaelson Initiative) is built on principles of respect, growth, and
           collaboration. All community members must adhere to the following
           guidelines:

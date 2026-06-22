@@ -14,7 +14,7 @@ const privacySections = [
     content: (
       <>
         <p>
-          At the Mikaelson Innovation and Community Development Initiative
+          At the Mikaelson Community Development And Tech Initiative
           (Mikaelson Initiative), we are committed to protecting your privacy
           and personal information. This Privacy Policy explains how we collect,
           use, disclose, and safeguard your information when you use our
