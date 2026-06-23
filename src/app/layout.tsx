@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/components/QueryProvider";
 import { Toaster } from "sonner";
@@ -90,32 +89,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
-  const inner = (
-    <QueryProvider>
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-M2GCJCC8"
-          height={0}
-          width={0}
-          style={{ display: "none", visibility: "hidden" }}
-        />
-      </noscript>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <div id="main-content">
-          {children}
-          <Toaster position="top-center" richColors />
-        </div>
-      </ThemeProvider>
-    </QueryProvider>
-  );
-
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
@@ -138,11 +111,27 @@ export default function RootLayout({
         />
       </head>
       <body className={`${poppins.variable} antialiased`}>
-        {clerkKey ? (
-          <ClerkProvider publishableKey={clerkKey}>{inner}</ClerkProvider>
-        ) : (
-          inner
-        )}
+        <QueryProvider>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-M2GCJCC8"
+              height={0}
+              width={0}
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div id="main-content">
+              {children}
+              <Toaster position="top-center" richColors />
+            </div>
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );
