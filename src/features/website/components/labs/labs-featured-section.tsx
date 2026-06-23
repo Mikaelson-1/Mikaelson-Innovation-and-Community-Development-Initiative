@@ -8,6 +8,8 @@ type Project = {
   category: string;
   description: string;
   image: string;
+  imageFit?: "cover" | "contain";
+  imageBg?: string;
   status: string;
   tags: string[];
   link?: string;
@@ -20,8 +22,10 @@ const projects: Project[] = [
     category: "education",
     description:
       "AI-powered habit tracking and accountability platform helping African students build discipline, measure progress, and achieve sustainable growth.",
-    image: "/assets/images/mikaelsonlogo.png",
-    status: "active",
+    image: "/assets/images/RIO.webp",
+    imageFit: "contain",
+    imageBg: "#f8fafc",
+    status: "development",
     tags: ["AI", "Education", "Analytics"],
   },
   {
@@ -30,7 +34,9 @@ const projects: Project[] = [
     category: "real-estate",
     description:
       "Platform simplifying rental property discovery, verification and tenant-landlord management across Nigerian cities.",
-    image: "/assets/images/Rental hub.jpeg",
+    image: "/assets/images/logo-horizontal-reversed.png",
+    imageFit: "contain",
+    imageBg: "#0f1a2e",
     status: "development",
     tags: ["Real Estate", "Nigeria", "Tech"],
     link: "http://rentalhub.mikaelsoninitiative.org/",
@@ -63,13 +69,15 @@ const LabsFeaturedProjects: React.FC = () => {
               onClick={() => setSelectedProject(project)}
             >
               {/* Image */}
-              <div className="relative">
+              <div
+                className="relative h-56 flex items-center justify-center"
+                style={{ background: project.imageBg ?? "#f1f5f9" }}
+              >
                 <Image
                   src={project.image}
                   alt={project.title}
-                  height={280}
-                  width={280}
-                  className="w-full h-56 object-cover"
+                  fill
+                  className={`p-6 ${project.imageFit === "contain" ? "object-contain" : "object-cover"}`}
                 />
                 <span
                   className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold rounded-full capitalize ${
@@ -136,13 +144,17 @@ const LabsFeaturedProjects: React.FC = () => {
                 <h2 className="text-2xl font-bold text-gray-900">
                   {selectedProject.title}
                 </h2>
-                <Image
-                  width={320}
-                  height={400}
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-64 object-cover rounded-lg"
-                />
+                <div
+                  className="relative w-full h-48 rounded-lg overflow-hidden flex items-center justify-center"
+                  style={{ background: selectedProject.imageBg ?? "#f1f5f9" }}
+                >
+                  <Image
+                    fill
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className={`p-6 ${selectedProject.imageFit === "contain" ? "object-contain" : "object-cover"}`}
+                  />
+                </div>
                 <p className="text-gray-600">{selectedProject.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.tags.map((tag) => (

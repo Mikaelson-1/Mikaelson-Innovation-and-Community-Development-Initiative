@@ -37,6 +37,7 @@ export interface TeamMember {
 // Filter options
 export const FILTERS = {
   ALL: "All",
+  BOARD: "Board & Advisory",
   LEADS: "Team Leads",
   OPERATIONS: "Operations",
   TECH: "Tech team",
@@ -60,35 +61,37 @@ export type FilterType = keyof typeof FILTERS;
 // Team data
 export const TEAM_MEMBERS: TeamMember[] = [
 
-  // ── Team Leads ──────────────────────────────────────────
+  // ── Board & Advisory ────────────────────────────────────
   {
     name: "Michael S. Olukayode",
-    department: "LEADS",
+    department: "BOARD",
     country: "NG",
-    role: "Founder & Executive Director",
+    role: "President, Board of Trustees",
     img: "/assets/images/MichaelOlukayode.jpg",
   },
   {
     name: "Khadijah Abdul Juma",
-    department: "LEADS",
+    department: "BOARD",
     country: "KE",
     role: "Advisor on Partnership and Growth Network",
     img: "/assets/images/Khadija-Abdul.png",
   },
   {
     name: "Imam Bashir Abdulwahab",
-    department: "LEADS",
+    department: "BOARD",
     country: "NG",
     role: "Secretary, Board of Trustees",
     img: "/assets/images/Imam-Bashir.JPG",
   },
   {
     name: "Precious Oparanozie",
-    department: "LEADS",
+    department: "BOARD",
     role: "Advisor on Legal & Policy",
     country: "NG",
     img: "/assets/images/PreciousChidinma.jpg",
   },
+
+  // ── Team Leads ──────────────────────────────────────────
   {
     name: "Oluwole Feranmi",
     department: "LEADS",

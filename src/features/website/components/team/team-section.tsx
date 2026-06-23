@@ -109,7 +109,7 @@ const TeamSection: React.FC = () => {
                 onClick={() => setSelectedMember(member)}
                 className="flex h-full w-full cursor-pointer flex-col items-start text-left"
               >
-                <div className="relative h-[370px] aspect-4/5 w-full overflow-hidden rounded-4xl bg-gray-50 sm:aspect-square">
+                <div className="relative h-[370px] w-full overflow-hidden rounded-4xl bg-gray-50">
                   <Image
                     src={member.img}
                     alt={member.name}
